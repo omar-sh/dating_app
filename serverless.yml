@@ -1,0 +1,51 @@
+service: serverlessSetup
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: us-west-1
+  environment:
+    DB: mongodb+srv://oalshrbajy:z91VysiagV4BsROk@cluster0.gb8swdj.mongodb.net/?retryWrites=true&w=majority
+    PRIVATE_KEY: secret
+
+
+# functions
+functions:
+  verify-token:
+    handler: ./src/functions/auth/verify-token/handler.handler
+
+  createUser:
+    handler: ./src/functions/create-user/handler.handler
+    events:
+      - http:
+          path: /user/create
+          method: post
+
+  login:
+    handler: ./src/functions/auth/login/handler.handler
+    events:
+      - http:
+          path: login
+          method: post
+
+  swipe:
+    handler: ./src/functions/swipe/handler.handler
+    events:
+      - http:
+          path: swipe
+          method: post
+          authorizer: verify-token
+
+  profiles:
+    handler: ./src/functions/profile/handler.handler
+    events:
+      - http:
+          path: profiles
+          method: get
+          authorizer: verify-token
+
+
+# Serverless plugins
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline

@@ -1,0 +1,13 @@
+[
+  {
+    "email": "user1@gmail.com",
+    "password" : "123456",
+    "name": "Omar",
+    "gender": "MALE",
+    "age": 23,
+    "location": {
+      "type": "Point",
+      "coordinates": [-0.186531, 10.849069]
+    }
+  }
+]
