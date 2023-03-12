@@ -6,17 +6,27 @@ For detailed instructions, please refer to the [documentation](https://www.serve
 
 ## How to start the project
 
-First of all you need to have mongoDB to be able to start the project, then you can 
+First of all you need to have mongoDB to be able to start the project, then you can do the following:
+
+
+```
+ npm install
+```
 
 ```
 npm run dev
 ```
 
-To deploy to AWS you could run:
+**To deploy to AWS you could run:**
 ```
 sls deploy
 ```
 (Don't forget to change env variables inside `serverless.yml` for DB when you deploy to production)
+
+**Run tests**
+```
+npm run test
+```
 
 
 ## DB design:
