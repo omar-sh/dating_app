@@ -40,12 +40,6 @@ export const handler = async (
 ): Promise<APIGatewayProxyResult> => {
   const client = await MongoConnection.init();
   const queryParams: ProfileDto = event.queryStringParameters || {};
-  const errors = await validateData(queryParams, ProfileDto);
-  if (errors.length) {
-    return formatJSONResponse(400, {
-      message: errors,
-    });
-  }
   const page = Number(queryParams.page) || 1;
   const limit = Number(queryParams.limit) || 3;
 
