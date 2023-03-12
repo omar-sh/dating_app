@@ -1,4 +1,4 @@
-# Mitte / Dating application using serverless and mongoDB
+# Dating application using serverless and mongoDB
 
 This project has been generated using the `aws-nodejs-typescript` template from the [Serverless framework](https://www.serverless.com/).
 
