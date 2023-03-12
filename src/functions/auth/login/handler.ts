@@ -10,7 +10,7 @@ const privateKey = process.env.PRIVATE_KEY;
 export const handler = async (
   event: APIGatewayProxyEvent,
 ): Promise<APIGatewayProxyResult> => {
-  const client = await MongoConnection.init();
+  await MongoConnection.init();
   const payload: LoginDto = JSON.parse(event.body!);
 
   try {

@@ -4,7 +4,7 @@ import { MongoConnection } from '../../../shared/mongo-connection';
 import UserModel from '../../../models/user.model';
 
 export const handler = async (event: any) => {
-  const client = await MongoConnection.init();
+  await MongoConnection.init();
 
   const token = event.headers.Authorization;
 

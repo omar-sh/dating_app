@@ -9,7 +9,7 @@ import { APIGatewayProxyResult } from 'aws-lambda/trigger/api-gateway-proxy';
 export const handler = async (
   event: APIGatewayProxyEvent,
 ): Promise<APIGatewayProxyResult> => {
-  const client = await MongoConnection.init();
+  await MongoConnection.init();
   const userId = event?.requestContext?.authorizer!.principalId;
   const payload: SwipeDto = JSON.parse(event.body!);
   payload.user = userId;

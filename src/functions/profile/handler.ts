@@ -1,11 +1,10 @@
 import UserModel from '../../models/user.model';
 import { MongoConnection } from '../../shared/mongo-connection';
-import { formatJSONResponse, validateData } from '../../shared/helpers';
+import { formatJSONResponse } from '../../shared/helpers';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import { APIGatewayProxyResult } from 'aws-lambda/trigger/api-gateway-proxy';
 import { ProfileDto } from './dtos/profile.dto';
-import PreferenceModel from '../../models/preferences.model';
-import { Preference } from '../../models/preferences.model';
+import PreferenceModel, { Preference } from '../../models/preferences.model';
 
 const buildFilterObject = (queryParams: ProfileDto) => {
   let filterObject: any = {};
@@ -38,7 +37,7 @@ const buildFilterObject = (queryParams: ProfileDto) => {
 export const handler = async (
   event: APIGatewayProxyEvent,
 ): Promise<APIGatewayProxyResult> => {
-  const client = await MongoConnection.init();
+  await MongoConnection.init();
   const queryParams: ProfileDto = event.queryStringParameters || {};
   const page = Number(queryParams.page) || 1;
   const limit = Number(queryParams.limit) || 3;

@@ -8,7 +8,7 @@ import { APIGatewayProxyResult } from 'aws-lambda/trigger/api-gateway-proxy';
 export const handler = async (
   event: APIGatewayProxyEvent,
 ): Promise<APIGatewayProxyResult> => {
-  const client = await MongoConnection.init();
+  await MongoConnection.init();
   const payload: CreateUserDto = JSON.parse(event.body!);
   const errors = await validateData(payload, CreateUserDto);
   if (errors.length) {
