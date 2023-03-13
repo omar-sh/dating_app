@@ -5,7 +5,7 @@ provider:
   runtime: nodejs16.x
   region: us-west-1
   environment:
-    DB: mongodb+srv://oalshrbajy:z91VysiagV4BsROk@cluster0.gb8swdj.mongodb.net/?retryWrites=true&w=majority
+    DB: mongodb+srv://localhost
     PRIVATE_KEY: secret
 
 
